@@ -1,6 +1,6 @@
 # Inasub
 
-The WIP app is here at GitHub pages:
+The WIP app is [here](https://monkey-sheng.github.io/inasub/) at GitHub pages.
 
 #### What is it?
 
