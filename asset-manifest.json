@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/inasub/static/css/main.c1b8747f.css",
+    "main.js": "/inasub/static/js/main.c6e5b9a6.js",
+    "static/js/787.8f7277e0.chunk.js": "/inasub/static/js/787.8f7277e0.chunk.js",
+    "static/media/vid.mp4": "/inasub/static/media/vid.2419baa2a676d400b7cf.mp4",
+    "index.html": "/inasub/index.html",
+    "main.c1b8747f.css.map": "/inasub/static/css/main.c1b8747f.css.map",
+    "main.c6e5b9a6.js.map": "/inasub/static/js/main.c6e5b9a6.js.map",
+    "787.8f7277e0.chunk.js.map": "/inasub/static/js/787.8f7277e0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c1b8747f.css",
+    "static/js/main.c6e5b9a6.js"
+  ]
+}

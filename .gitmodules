@@ -1,6 +1,0 @@
-[submodule "libass-wasm"]
-	path = libass-wasm
-	url = https://github.com/monkey-sheng/libass-wasm
-[submodule "wavesurfer"]
-	path = wavesurfer
-	url = https://github.com/monkey-sheng/wavesurfer.js
