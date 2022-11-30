@@ -1,0 +1,7 @@
+.grid_container {
+    width: 100%;
+    height: 2vh;
+    background-color: white;
+    border-collapse: collapse;
+    border: 2px solid;
+}
