@@ -4,7 +4,10 @@ import newSubtitle from "./newSubtitle/NewSubtitle";
 import saveSubtitle from "./saveSubtitle/SaveSubtitle";
 // more imports
 
-class DropdownMenuBar extends Component {
+/**
+ * quick actions such as opening and saving subtitles, similar to aegisub
+ */
+class QuickActionsBar extends Component {
     render() {
         return (
             <div>
@@ -14,6 +17,6 @@ class DropdownMenuBar extends Component {
     }
 }
 
-DropdownMenuBar.propTypes = {};
+QuickActionsBar.propTypes = {};
 
-export default DropdownMenuBar;
+export default QuickActionsBar;

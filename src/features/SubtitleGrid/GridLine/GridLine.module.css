@@ -1,0 +1,49 @@
+.is_playing {
+    background-color: #FFFDEA;
+}
+
+.selected {
+    background-color: #CEFFE7;
+}
+
+.active {
+    border: 3px solid #FF5BEF;
+}
+
+.comment {
+    background-color: #D8DEF5;
+}
+
+.collision {
+    color: #FF0000;
+}
+
+.lineNumber-field {
+    padding: 2px 4px;
+}
+
+.style-field {
+    min-width: 3vw;
+    max-width: 10vw;
+    overflow: hidden;
+    text-overflow: fade;
+    white-space: nowrap;
+}
+
+.name-effect-fields {
+    max-width: 10vw;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.timestamp-field {
+    padding: 2px 4px;
+}
+
+
+.text-field {
+    min-width: 40%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

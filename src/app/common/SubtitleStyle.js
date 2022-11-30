@@ -80,17 +80,15 @@ export default class SubtitleStyle {
 }
 
 // TODO: store the font file in FS on page load
-export const defaultStyle = new SubtitleStyle('Default', 'Source Han Sans CN Bold', 90, '&H00FFFFFF&', '&H000000FF&',
-  '&H00000000&', '&H00000000&', 0,0,0,0,100,100,0,0,1, 6, 2,2,10,10,50,1)
+export const {...defaultStyle} = new SubtitleStyle('Default', 'Source Han Sans CN Bold', 90, '&H00FFFFFF&', '&H000000FF&',
+  '&H00000000&', '&H00000000&', 0,0,0,0,100,100,0,0,1, 6, 2,2,10,10,50,1);
 
 
 /**
  * Either get it from localStorage or provide a singleton list default
- * @returns {Array.<SubtitleStyle>}
+ * @returns {Object.<SubtitleStyle>}
  */
 export function getStyles() {
   // TODO: fetch from localStorage, or use default if none exist
-  const stylesList = [];
-  stylesList.push(defaultStyle);
-  return stylesList;
+  return {[defaultStyle.Name]: defaultStyle};
 }

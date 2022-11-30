@@ -2,21 +2,10 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import styles from './CMA.module.css'
-import {connect} from "react-redux";
-import {deleteLines} from "../../../../app/LineOrderingSlice";
+import deleteLinesAction from "../../../../app/common/EditingActions/DeleteLines";
 
 
-function mapStateToProps(state) {
-  const selectedLines = state.selectedLines.present;
-  return {selectedLines}
-}
-
-const mapDispatchToProps = {
-  // TODO: reducer actions here
-  deleteLines,
-}
-
-class CMA_DeleteLine extends Component {
+class CMA_DeleteLines extends Component {
 
   constructor(props, context) {
     super(props, context);
@@ -24,35 +13,37 @@ class CMA_DeleteLine extends Component {
   }
 
   /**
-   * Perform deletion of selected lines, and set selected line to one closest to index of
-   * original active line
-   * don't delete if only one line left
+   * Perform deletion of selected lines, and set active and selected lines to the one that
+   * currently is closest to the index (line number) of original active line
+   * if everything is deleted, add a default line
    * @param event
    */
   handleOnClick(event) {
-
+    event.stopPropagation();
+    event.preventDefault();
+    deleteLinesAction();
   }
 
   render() {
-    const containerClasses = 'flex-row ' + styles.actionContainer;
-    const actionNameClasses = 'flex-grow-1 ' + styles.actionName;
+    const containerClasses = 'd-flex flex-row ' + styles.actionContainer;
+    const actionNameClasses = 'flex-grow-1 ' + styles.actionNameShortcut;
     return (
       <div className={containerClasses}>
         <div className={styles.actionLogo}>
 
         </div>
-        <div className={actionNameClasses} onClick={}>
+        <div className={actionNameClasses} onClick={this.handleOnClick}>
           Delete Lines
         </div>
-        <div className="shortcut">
-
+        <div className={styles.actionNameShortcut}>
+          Ctrl-Delete
         </div>
       </div>
     );
   }
 }
 
-CMA_DeleteLine.propTypes = {};
+CMA_DeleteLines.propTypes = {};
 
-// export default CMA_DeleteLine;
-export default connect(mapStateToProps, mapDispatchToProps)(CMA_DeleteLine);
+// export default CMA_DeleteLines;
+export default CMA_DeleteLines;

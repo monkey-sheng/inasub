@@ -7,7 +7,7 @@ export function timestampToTime(timestamp) {
   if (hms.length !== 3) {
     return null;
   }
-  return (Number(hms[0]) * 3600 + Number(hms[1]) * 60 + Number(hms[2])).toFixed(2);
+  return (Number(hms[0]) * 3600 + Number(hms[1]) * 60 + Number(hms[2]));  //.toFixed(2);
 }
 
 export function timeToTimeStamp(time) {
@@ -57,9 +57,10 @@ export function parseAss(content) {
       MarginR = Number(styleObj.MarginR) || defaultStyle.MarginR;
       MarginV = Number(styleObj.MarginV) || defaultStyle.MarginV;
       Encoding = Number(styleObj.Encoding) || defaultStyle.Encoding;
-      return new SubtitleStyle(Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold,
+      const {...subtitleStyle} = new SubtitleStyle(Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold,
         Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow,
         Alignment, MarginL, MarginR, MarginV, Encoding);
+      return subtitleStyle;
     }
 
     function createSubtitleLineWithSanity(lineObj) {
@@ -85,15 +86,17 @@ export function parseAss(content) {
         isComment = false;
         const line = lineObj.value;
         sanitize(line);
-        return new SubtitleLine(id, isComment, Start, End, Style, Name, Effect, Text, Layer,
+        const {...subtitleLine} = new SubtitleLine(id, isComment, Start, End, Style, Name, Effect, Text, Layer,
           MarginL, MarginR, MarginV);
+        return subtitleLine;
       }
       else if (lineObj.key && lineObj.key === 'Comment') {
         isComment = true;
         const line = lineObj.value;
         sanitize(line);
-        return new SubtitleLine(id, isComment, Start, End, Style, Name, Effect, Text, Layer,
+        const {...subtitleLine} = new SubtitleLine(id, isComment, Start, End, Style, Name, Effect, Text, Layer,
           MarginL, MarginR, MarginV);
+        return subtitleLine;
       }
       // else if (lineObj.type === 'comment') // this is file comment line, i.e. '; a file line'
       return null;
@@ -195,7 +198,7 @@ export function parseAss(content) {
     }
   }
 
-  const assFile = new AssFile(scriptInfo, styles, events, otherSections);
+  const {...assFile} = new AssFile(scriptInfo, styles, events, otherSections);
   console.log("parseAss returned ass file:\n", assFile)
   return assFile;
 }
@@ -212,7 +215,7 @@ export class AssFile {
   /**
    * An object representation of an ass file
    * @param {Array} scriptInfo unchanged from raw parse result
-   * @param {Array.<SubtitleStyle>} styles list of SubtitleStyle
+   * @param {Object.<SubtitleStyle>} styles name of style mapping to SubtitleStyle
    * @param {Object.<SubtitleLine>} events object with id as key mapping to SubtitleLine
    * @param {Array} otherSections unchanged from raw parse result
    */
@@ -235,13 +238,14 @@ export class AssFile {
     }
   }
 
-  toAssFileContent() {
-    // script info and other sections are raw kv objects list
-    // events and styles deal with them accordingly
-  }
-
-
 }
+
+export function toAssFileContent(assFileObj) {
+  // TODO: ass file object to actual file content
+  // script info and other sections are raw kv objects list
+  // events and styles deal with them accordingly
+}
+
 
 export const scriptInfoSectionDefault = []  // TODO
 

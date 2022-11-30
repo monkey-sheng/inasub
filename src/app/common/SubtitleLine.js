@@ -1,4 +1,5 @@
 import {nanoid} from "@reduxjs/toolkit";
+import {defaultStyle} from "./SubtitleStyle";
 
 export default class SubtitleLine {
   id;
@@ -38,8 +39,13 @@ export default class SubtitleLine {
  * @returns {SubtitleLine}
  */
 export function getDefaultLine(lineID) {
+  const defaultStyleName = defaultStyle.Name;
   if (lineID) {
-    return new SubtitleLine(lineID, false, 0.0, 5.0, '', '', '', '', 0, 0, 0, 0)
+    const {...subtitleLine} = new SubtitleLine(lineID, false, 0.0, 5.0, defaultStyleName, '', '', '', 0, 0, 0, 0);
+    return subtitleLine;
   }
-  return new SubtitleLine(nanoid(), false, 0.0, 5.0, '', '', '', '', 0, 0, 0, 0)
+  const {...subtitleLine} = new SubtitleLine(nanoid(), false, 0.0, 5.0, defaultStyleName, '', '', '', 0, 0, 0, 0);
+  return subtitleLine;
 }
+
+export const initialLineID = nanoid();

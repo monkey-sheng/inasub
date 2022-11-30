@@ -3,50 +3,50 @@ import {createSlice} from "@reduxjs/toolkit";
 
 /**
  * this is for setting the different fields of an already created line,
- * NOT FOR subtitle grid reordering/creating new lines
+ * NOT FOR subtitle grid reordering/creating/deleting new lines
  */
 
 
 const initialState = {}  // mapping from id to SubtitleLine
 
-export const SubtitleLinesSlice = createSlice({
+export const subtitleLinesUISlice = createSlice({
   name: 'subtitleLines',
   initialState,
   reducers: {
     setText: (state, action) => {
       const lineIDs = action.payload.ids;
       for (const lineID of lineIDs) {
-        state[lineID].text = action.payload
+        state[lineID].Text = action.payload
       }
     },
     setStyle: (state, action) => {
       const lineIDs = action.payload.ids;
       for (const lineID of lineIDs) {
-        state[lineID].style = action.payload
+        state[lineID].Style = action.payload
       }
     },
     setStart: (state, action) => {
       const lineIDs = action.payload.ids;
       for (const lineID of lineIDs) {
-        state[lineID].start = action.payload
+        state[lineID].Start = action.payload
       }
     },
     setEnd: (state, action) => {
       const lineIDs = action.payload.ids;
       for (const lineID of lineIDs) {
-        state[lineID].end = action.payload
+        state[lineID].End = action.payload
       }
     },
     setLayer: (state, action) => {
       const lineIDs = action.payload.ids;
       for (const lineID of lineIDs) {
-        state[lineID].layer = action.payload
+        state[lineID].Layer = action.payload
       }
     },
     setName: (state, action) => {
       const lineIDs = action.payload.ids;
       for (const lineID of lineIDs) {
-        state[lineID].name = action.payload
+        state[lineID].Name = action.payload
       }
     },
     setEffect: (state, action) => {
@@ -64,21 +64,23 @@ export const SubtitleLinesSlice = createSlice({
     setMarginL: (state, action) => {
       const lineIDs = action.payload.ids;
       for (const lineID of lineIDs) {
-        state[lineID].marginL = action.payload
+        state[lineID].MarginL = action.payload
       }
     },
     setMarginR: (state, action) => {
       const lineIDs = action.payload.ids;
       for (const lineID of lineIDs) {
-        state[lineID].marginR = action.payload
+        state[lineID].MarginR = action.payload
       }
     },
     setMarginV: (state, action) => {
       const lineIDs = action.payload.ids;
       for (const lineID of lineIDs) {
-        state[lineID].marginV = action.payload
+        state[lineID].MarginV = action.payload
       }
-    },
-
+    }
   }
 })
+
+export const subtitleLinesActions = subtitleLinesUISlice.actions;
+export default subtitleLinesUISlice.reducer;
